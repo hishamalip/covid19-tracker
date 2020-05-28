@@ -1,13 +1,11 @@
 import React from 'react';
-
-// importing components from react bootstrap
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark">
                 <Link to="/" className="navbar-brand">Covid-19 Tracker</Link>
                 {/* <Navbar.Brand href="#home"></Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
