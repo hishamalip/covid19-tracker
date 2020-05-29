@@ -69,7 +69,7 @@ class India extends React.Component {
                     <Accordion.Toggle as={Card.Header} variant="primary" eventKey={index} className="font-weight-bold">
                         <Button variant="dark" style={ {marginRight:"10px"}}>{item}</Button>
                         <Badge variant="secondary">Confirmed-{total_confirmed}</Badge>{'  '}
-                        <Badge variant="primary">New Cases-{total_newcases}</Badge>
+                        <Badge variant="primary">New Cases-{total_newcases}</Badge>{' '}
                         <Badge variant="secondary">Deaths-{total_deaths}</Badge>{'  '}
                         <Badge variant="danger">New Deaths-{total_newdeaths}</Badge>{'  '}
                         <Badge variant="success">Recoverd-{total_recovered}</Badge>{'  '}
