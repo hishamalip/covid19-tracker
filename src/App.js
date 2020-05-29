@@ -13,7 +13,7 @@ function App() {
 
     <BrowserRouter>
       <Switch>
-        <Route exact path="/covid19-tracker">
+        <Route exact path="/covid19-tracker/">
           <Header />
           <India />
         </Route>
