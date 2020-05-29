@@ -17,7 +17,7 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path="/covid19-tracker">
+        <Route path="/covid19-tracker">
           <India />
         </Route>
 
