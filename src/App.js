@@ -12,24 +12,19 @@ function App() {
   return (
 
     <BrowserRouter>
-      <div className="container-fluid">
-      <Header />
-      </div>
-
       <Switch>
-        <Route path="/covid19-tracker">
+        <Route exact path="/covid19-tracker">
+          <Header />
           <India />
         </Route>
 
-        <Route path="/india">
-          <India />
-        </Route>
-
-        <Route path="/kerala">
+        <Route path="/covid19-tracker/kerala">
+          <Header />
           <Kerala />
         </Route>
-    
-        <Route path="/world">
+
+        <Route path="/covid19-tracker/world">
+          <Header />
           <World />
         </Route>
       </Switch>
