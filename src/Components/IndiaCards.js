@@ -7,7 +7,7 @@ class IndiaCards extends React.Component {
     constructor() {
         super();
         this.state = {
-            indiacards_data: []
+            indiacards_data : []
         }
     }
 
@@ -30,7 +30,7 @@ class IndiaCards extends React.Component {
                     <Col sm>
                         <CardDeck>
                             <Card bg="primary">
-                                <Card.Header as="h5">Total Cases</Card.Header>
+                                <Card.Header as="h4">Total Cases</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.indiacards_data.cases}</Card.Title>
                                     <Card.Text>
@@ -40,7 +40,7 @@ class IndiaCards extends React.Component {
                             </Card>
 
                             <Card bg="warning">
-                                <Card.Header as="h5">Active Cases</Card.Header>
+                                <Card.Header as="h4">Active Cases</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.indiacards_data.active}</Card.Title>
                                     <Card.Text>
@@ -49,7 +49,7 @@ class IndiaCards extends React.Component {
                             </Card>
 
                             <Card bg="danger">
-                                <Card.Header as="h5">Total Death</Card.Header>
+                                <Card.Header as="h4">Total Death</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.indiacards_data.deaths}</Card.Title>
                                     <Card.Text>
@@ -59,7 +59,7 @@ class IndiaCards extends React.Component {
                             </Card>
 
                             <Card bg="success">
-                                <Card.Header as="h5">Total Recovered</Card.Header>
+                                <Card.Header as="h4">Total Recovered</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.indiacards_data.recovered}</Card.Title>
                                     <Card.Text>
