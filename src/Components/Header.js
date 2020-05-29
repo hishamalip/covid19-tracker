@@ -10,8 +10,8 @@ class Header extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Link className="nav-link" to="/covid19-tracker/">India</Link>
-                        <Link className="nav-link" to="/covid19-tracker/world/">World</Link>
+                        <Link className="nav-link" to="/covid19-tracker/">World</Link>
+                        <Link className="nav-link" to="/covid19-tracker/india/">India</Link>
                         <Link className="nav-link" to="/covid19-tracker/kerala/">Kerala</Link>
                     </Nav>
                     <Nav>

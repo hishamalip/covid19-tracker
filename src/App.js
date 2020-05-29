@@ -10,22 +10,21 @@ import World from './Components/World';
 
 function App() {
   return (
-
     <BrowserRouter>
+      <div>
+        <Header />
+      </div>
       <Switch>
         <Route exact path="/covid19-tracker/">
-          <Header />
+          <World />
+        </Route>
+
+        <Route path="/covid19-tracker/india/">
           <India />
         </Route>
 
         <Route path="/covid19-tracker/kerala/">
-          <Header />
           <Kerala />
-        </Route>
-
-        <Route path="/covid19-tracker/world/">
-          <Header />
-          <World />
         </Route>
       </Switch>
 
