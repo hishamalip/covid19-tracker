@@ -8,13 +8,12 @@ import India from './Components/India';
 import Kerala from './Components/Kerala';
 import World from './Components/World';
 
-
 function App() {
   return (
 
     <BrowserRouter>
       <div className="container-fluid">
-        <Header />
+      <Header />
       </div>
 
       <Switch>
