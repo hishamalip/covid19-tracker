@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
         return (
             <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark">
-                <Link to="/" className="navbar-brand">Covid-19 Tracker</Link>
+                <Link to="/india" className="navbar-brand">Covid-19 Tracker</Link>
                 {/* <Navbar.Brand href="#home"></Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
