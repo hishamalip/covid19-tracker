@@ -10,14 +10,10 @@ class World extends React.Component {
         this.state = {
             world_data: []
         }
-        var tablestyle = {margin:"30px"};
-        var x = {color:"blue", fontStyle:"italic"};
-
     }
 
     componentWillMount() {
         axios.get("https://disease.sh/v2/countries").then(response => {
-            // console.log(response.data);
             this.setState({
                 world_data: response.data
             });
@@ -26,7 +22,7 @@ class World extends React.Component {
 
     render() {
 
-        let x = this.state.world_data.map((item, index) => {
+        let table_data = this.state.world_data.map((item, index) => {
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
@@ -44,8 +40,6 @@ class World extends React.Component {
 
           
         return (
-
-
             <div>
                 <Container fluid>
                     <Row>
@@ -63,7 +57,7 @@ class World extends React.Component {
                             <Table responsive bordered hover size="sm">
                                 <thead className="thead-dark">
                                     <tr>
-                                        <th>Sl No.</th>
+                                        <th>#</th>
                                         <th>Country / Other</th>
                                         <th className="bg-primary">Total Cases</th>
                                         <th className="bg-warning">New Cases</th>
@@ -75,7 +69,7 @@ class World extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {x}
+                                    {table_data}
                                 </tbody>
                             </Table>
                         </Col>
@@ -84,34 +78,6 @@ class World extends React.Component {
                 </Container>
             </div>
 
-
-
-
-
-
-            // <div className="row">
-
-            //     <div className="col-md-12">
-            //         <Table responsive bordered hover size="sm">
-            //             <thead className="thead-dark">
-            //                 <tr>
-            //                     <th>Sl No.</th>
-            //                     <th>Country / Other</th>
-            //                     <th className="bg-primary">Total Cases</th>
-            //                     <th className="bg-warning">New Cases</th>
-            //                     <th className="bg-danger">Total Deaths</th>
-            //                     <th>New Deaths</th>
-            //                     <th className="bg-success">Recovered</th>
-            //                     <th>Active Cases</th>
-            //                     <th>Serious / Critical</th>
-            //                 </tr>
-            //             </thead>
-            //             <tbody>
-            //                 {x}
-            //             </tbody>
-            //         </Table>
-            //     </div>
-            // </div>
         );
     }
 }

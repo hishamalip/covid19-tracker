@@ -7,7 +7,7 @@ class WorldCards extends React.Component {
     constructor() {
         super();
         this.state = {
-            worldcards_data: []
+            worldcards_data: {}
         }
     }
 
@@ -26,11 +26,12 @@ class WorldCards extends React.Component {
                 <Row>
                     <Col sm="2"> <h2>World</h2> </Col>
                 </Row>
+                
                 <Row>
                     <Col sm>
                         <CardDeck>
                             <Card bg="primary">
-                                <Card.Header as="h5">Total Cases</Card.Header>
+                                <Card.Header as="h4">Total Cases</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.worldcards_data.cases}</Card.Title>
                                     <Card.Text>
@@ -40,7 +41,7 @@ class WorldCards extends React.Component {
                             </Card>
 
                             <Card bg="warning">
-                                <Card.Header as="h5">Active Cases</Card.Header>
+                                <Card.Header as="h4">Active Cases</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.worldcards_data.active}</Card.Title>
                                     <Card.Text>
@@ -49,7 +50,7 @@ class WorldCards extends React.Component {
                             </Card>
 
                             <Card bg="danger">
-                                <Card.Header as="h5">Total Death</Card.Header>
+                                <Card.Header as="h4">Total Death</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.worldcards_data.deaths}</Card.Title>
                                     <Card.Text>
@@ -59,7 +60,7 @@ class WorldCards extends React.Component {
                             </Card>
 
                             <Card bg="success">
-                                <Card.Header as="h5">Total Recovered</Card.Header>
+                                <Card.Header as="h4">Total Recovered</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{this.state.worldcards_data.recovered}</Card.Title>
                                     <Card.Text>
