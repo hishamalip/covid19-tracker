@@ -4,9 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Header from './Components/Header';
+import World from './Components/World';
 import India from './Components/India';
 import Kerala from './Components/Kerala';
-import World from './Components/World';
+
 
 function App() {
   return (
