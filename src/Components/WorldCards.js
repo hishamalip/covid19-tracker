@@ -17,7 +17,6 @@ class WorldCards extends React.Component {
                 worldcards_data: reponse.data
             })
         });
-
     }
 
     render() {
