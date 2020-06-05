@@ -7,7 +7,7 @@ class KeralaCards extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            district_data: {} 
+            district_data: {}
         }
     }
 
@@ -28,8 +28,8 @@ class KeralaCards extends React.Component {
         let active_cases = 0;
         let total_deaths = 0, total_today_deaths = 0;
         let total_recovered = 0, total_today_recovered = 0;
-        
-        district_names.map( (item, index) => {
+
+        district_names.map((item, index) => {
             total_cases += this.state.district_data[item].confirmed;
             total_today_cases += this.state.district_data[item].delta.confirmed;
             active_cases += this.state.district_data[item].active;
