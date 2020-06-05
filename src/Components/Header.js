@@ -15,10 +15,7 @@ class Header extends React.Component {
                         <Link className="nav-link" to="/covid19-tracker/kerala/">Kerala</Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                            </Nav.Link>
+                        <Nav.Link href="https://github.com/hishamalip/covid19-tracker/">Github</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
