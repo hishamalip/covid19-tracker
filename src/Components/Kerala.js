@@ -9,37 +9,44 @@ class Kerala extends React.Component {
     constructor() {
         super();
         this.state = {
-            district_data: {}
+            district_data: {},
+            district_names: [],
+            sort: 0
         }
     }
 
     componentWillMount() {
         axios.get("https://api.covid19india.org/state_district_wise.json").then(response => {
             this.setState({
-                district_data: response.data.Kerala.districtData
+                district_data: response.data.Kerala.districtData,
+                district_names: Object.keys(response.data.Kerala.districtData)
             });
         });
     }
 
-    render() {
-        var district_data = this.state.district_data;
-        var district_names = Object.keys(this.state.district_data);
-        let table_data = district_names.map((item, index) => {
+    renderTable = () => {
+        return this.state.district_names.map((item, index) => {
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
                     <td className="table-active">{item}</td>
-                    <td className="table-primary text-center">{district_data[item].confirmed}</td>
-                    <td className="table-warning text-center">{district_data[item].delta.confirmed}</td>
-                    <td className="text-center">{district_data[item].active}</td>
-                    <td className="table-danger text-center">{district_data[item].deceased}</td>
-                    <td className="text-center">{district_data[item].delta.deceased}</td>
-                    <td className="table-success text-center">{district_data[item].recovered}</td>
-                    <td className="text-center">{district_data[item].delta.recovered}</td>
+                    <td className="table-primary text-center">{this.state.district_data[item].confirmed}</td>
+                    <td className="table-warning text-center">{this.state.district_data[item].delta.confirmed}</td>
+                    <td className="text-center">{this.state.district_data[item].active}</td>
+                    <td className="table-danger text-center">{this.state.district_data[item].deceased}</td>
+                    <td className="text-center">{this.state.district_data[item].delta.deceased}</td>
+                    <td className="table-success text-center">{this.state.district_data[item].recovered}</td>
+                    <td className="text-center">{this.state.district_data[item].delta.recovered}</td>
                 </tr>
             );
         })
+    }
 
+    sortData = () => {
+        this.setState({ district_names: this.state.district_names.reverse(), sort: !this.state.sort })
+    }
+
+    render() {
         return (
             <Container fluid>
                 <Row>
@@ -58,7 +65,10 @@ class Kerala extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>District / Other</th>
+                                    <th>
+                                        <span>District / Other</span>
+                                        <i class={!this.state.sort ? "fa fa-caret-up" : "fa fa-caret-down"} style={{ marginLeft: "20px", cursor: "pointer" }} onClick={this.sortData} />
+                                    </th>
                                     <th className="bg-primary text-center">Total Cases</th>
                                     <th className="bg-warning text-center">New Cases</th>
                                     <th className="text-center">Active Cases</th>
@@ -69,12 +79,12 @@ class Kerala extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {table_data}
+                                {this.renderTable()}
                             </tbody>
                         </Table>
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         );
     }
 }

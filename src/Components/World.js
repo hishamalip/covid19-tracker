@@ -8,7 +8,8 @@ class World extends React.Component {
     constructor() {
         super();
         this.state = {
-            world_data: []
+            world_data: [],
+            sort: 0
         }
     }
 
@@ -20,9 +21,8 @@ class World extends React.Component {
         });
     }
 
-    render() {
-
-        let table_data = this.state.world_data.map((item, index) => {
+    renderTable = () => {
+        return this.state.world_data.map((item, index) => {
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
@@ -37,8 +37,25 @@ class World extends React.Component {
                 </tr>
             );
         })
+    }
 
-          
+    sortData = () => {
+        const sort=this.state.sort
+        this.setState({
+            world_data: this.state.world_data.sort(function (a, b) {
+                var textA = a.country.toUpperCase();
+                var textB = b.country.toUpperCase();
+                if (sort)
+                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                else
+                    return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+            }),
+            sort: !this.state.sort
+        })
+    }
+
+    render() {
+
         return (
             <div>
                 <Container fluid>
@@ -58,7 +75,10 @@ class World extends React.Component {
                                 <thead className="thead-dark">
                                     <tr>
                                         <th>#</th>
-                                        <th>Country / Other</th>
+                                        <th>
+                                            Country / Other
+                                            <i class={!this.state.sort ? "fa fa-caret-up" : "fa fa-caret-down"} style={{ marginLeft: "20px", cursor: "pointer" }} onClick={this.sortData} />
+                                        </th>
                                         <th className="bg-primary">Total Cases</th>
                                         <th className="bg-warning">New Cases</th>
                                         <th className="bg-danger">Total Deaths</th>
@@ -69,7 +89,7 @@ class World extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {table_data}
+                                    {this.renderTable()}
                                 </tbody>
                             </Table>
                         </Col>
