@@ -24,10 +24,10 @@ class India extends React.Component {
         });
     }
 
-    render() {
+    renderTable=()=>{
         let all_state_names = Object.keys(this.state.data);
 
-        let state_names = all_state_names.map((item, index) => {
+        return all_state_names.map((item, index) => {
 
             let all_districts = this.state.data[item].districtData;
 
@@ -100,8 +100,9 @@ class India extends React.Component {
                 </Card>
             );
         })
+    }
 
-
+    render() {
 
         return (
             <Container fluid>
@@ -118,7 +119,7 @@ class India extends React.Component {
                 <Row>
                     <Col>
                         <Accordion>
-                            {state_names}
+                            {this.renderTable()}
                         </Accordion>
                     </Col>
 
