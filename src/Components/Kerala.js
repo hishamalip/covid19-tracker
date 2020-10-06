@@ -11,15 +11,18 @@ class Kerala extends React.Component {
         this.state = {
             district_data: {},
             district_names: [],
-            sort: 0
+            sort: 0,
+            load: false
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        this.setState({ load: true });
         axios.get("https://api.covid19india.org/state_district_wise.json").then(response => {
             this.setState({
                 district_data: response.data.Kerala.districtData,
-                district_names: Object.keys(response.data.Kerala.districtData)
+                district_names: Object.keys(response.data.Kerala.districtData),
+                load: false
             });
         });
     }
@@ -65,7 +68,7 @@ class Kerala extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th onClick={this.sortData}  style={{cursor:"pointer"}}>
+                                    <th onClick={this.sortData} style={{ cursor: "pointer" }}>
                                         <span>District / Other</span>
                                         <i class={!this.state.sort ? "fa fa-caret-up" : "fa fa-caret-down"} style={{ marginLeft: "20px" }} onClick={this.sortData} />
                                     </th>
@@ -79,7 +82,7 @@ class Kerala extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.renderTable()}
+                                {!this.state.load ? this.renderTable() : <div className="loader-container"><div className="loader"></div></div>}
                             </tbody>
                         </Table>
                     </Col>

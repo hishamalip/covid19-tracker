@@ -9,14 +9,17 @@ class World extends React.Component {
         super();
         this.state = {
             world_data: [],
-            sort: 0
+            sort: 0,
+            load: false
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        this.setState({ load: true })
         axios.get("https://disease.sh/v2/countries").then(response => {
             this.setState({
-                world_data: response.data
+                world_data: response.data,
+                load: false
             });
         });
     }
@@ -40,7 +43,7 @@ class World extends React.Component {
     }
 
     sortData = () => {
-        const sort=this.state.sort
+        const sort = this.state.sort
         this.setState({
             world_data: this.state.world_data.sort(function (a, b) {
                 var textA = a.country.toUpperCase();
@@ -75,7 +78,7 @@ class World extends React.Component {
                                 <thead className="thead-dark">
                                     <tr>
                                         <th>#</th>
-                                        <th onClick={this.sortData} style={{cursor:"pointer"}}>
+                                        <th onClick={this.sortData} style={{ cursor: "pointer" }}>
                                             Country / Other
                                             <i class={!this.state.sort ? "fa fa-caret-up" : "fa fa-caret-down"} style={{ marginLeft: "20px" }} onClick={this.sortData} />
                                         </th>
@@ -89,7 +92,7 @@ class World extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.renderTable()}
+                                    {!this.state.load ? this.renderTable() : <div className="loader-container"><div className="loader"></div></div>}
                                 </tbody>
                             </Table>
                         </Col>
