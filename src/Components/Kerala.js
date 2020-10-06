@@ -65,9 +65,9 @@ class Kerala extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>
+                                    <th onClick={this.sortData}  style={{cursor:"pointer"}}>
                                         <span>District / Other</span>
-                                        <i class={!this.state.sort ? "fa fa-caret-up" : "fa fa-caret-down"} style={{ marginLeft: "20px", cursor: "pointer" }} onClick={this.sortData} />
+                                        <i class={!this.state.sort ? "fa fa-caret-up" : "fa fa-caret-down"} style={{ marginLeft: "20px" }} onClick={this.sortData} />
                                     </th>
                                     <th className="bg-primary text-center">Total Cases</th>
                                     <th className="bg-warning text-center">New Cases</th>
