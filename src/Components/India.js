@@ -12,19 +12,22 @@ class India extends React.Component {
         super(props);
         this.state = {
             data: {},
-            distrct_data: {}
+            distrct_data: {},
+            load: false
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        this.setState({ load: true });
         axios.get("https://api.covid19india.org/state_district_wise.json").then(response => {
-            this.setState(
-                { data: response.data }
-            );
+            this.setState({
+                data: response.data,
+                load: false
+            });
         });
     }
 
-    renderTable=()=>{
+    renderTable = () => {
         let all_state_names = Object.keys(this.state.data);
 
         return all_state_names.map((item, index) => {
@@ -67,13 +70,13 @@ class India extends React.Component {
             return (
                 <Card>
                     <Accordion.Toggle as={Card.Header} variant="primary" eventKey={index} className="font-weight-bold">
-                        <Button variant="dark" style={ {marginRight:"10px"}}>{item}</Button>
+                        <Button variant="dark" style={{ marginRight: "10px" }}>{item}</Button>
                         <Badge variant="secondary">Confirmed-{total_confirmed}</Badge>{'  '}
                         <Badge variant="primary">New Cases-{total_newcases}</Badge>{' '}
                         <Badge variant="secondary">Deaths-{total_deaths}</Badge>{'  '}
                         <Badge variant="danger">New Deaths-{total_newdeaths}</Badge>{'  '}
                         <Badge variant="success">Recoverd-{total_recovered}</Badge>{'  '}
-                        <Badge variant="warning">Active-{total_active}</Badge>{'  '}                        
+                        <Badge variant="warning">Active-{total_active}</Badge>{'  '}
                     </Accordion.Toggle>
 
                     <Accordion.Collapse eventKey={index}>
@@ -119,7 +122,7 @@ class India extends React.Component {
                 <Row>
                     <Col>
                         <Accordion>
-                            {this.renderTable()}
+                            {!this.state.load ? this.renderTable() : <div className="loader-container"><div className="loader"></div></div>}
                         </Accordion>
                     </Col>
 
